@@ -8,12 +8,12 @@
 #### 环境
 - Java 8
 - Maven3.x
-- Flink 1.5
+- Flink 1.8.0  （table和hadoop依赖放入lib目录下）
 - node.js (可选，开发前端需要)
 
 #### 快速运行
 ```
-  mvn clean package -DskipTests -Pnpm
+  mvn clean package -DskipTests -Pdev,npm
 ```
 ```
   java -jar alchemy-web/target/alchemy-web-1.0.0-SNAPSHOT.jar
@@ -62,7 +62,7 @@ resource的config目录下，修改dingtalk的webhook
 ![](/docs/media/15614539363428/15615363294915.jpg)
 
 
-#### 生成环境
+#### 生产环境
 必须要做以下事情：
 
 * dev默认是h2数据库，所以必须修改数据库配置
@@ -82,7 +82,6 @@ resource的config目录下，修改dingtalk的webhook
 
 * 维表支持redis、hbase等
 * 支持yarn模式
-* 支持最新版flink
 * 动态拉取schema字段
 * ......
 

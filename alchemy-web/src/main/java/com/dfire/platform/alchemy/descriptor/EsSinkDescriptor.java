@@ -3,7 +3,7 @@ package com.dfire.platform.alchemy.descriptor;
 import com.dfire.platform.alchemy.common.Constants;
 import com.dfire.platform.alchemy.connectors.elasticsearch.ElasticsearchProperties;
 import com.dfire.platform.alchemy.connectors.elasticsearch.ElasticsearchTableSink;
-import org.apache.flink.table.shaded.org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.Assert;
 
@@ -14,8 +14,6 @@ import java.util.Map;
  * @date 03/06/2018
  */
 public class EsSinkDescriptor extends SinkDescriptor {
-
-    private String name;
 
     private String transports;
 
@@ -37,14 +35,6 @@ public class EsSinkDescriptor extends SinkDescriptor {
 
     private Map<String, Object> config;
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getTransports() {
         return transports;

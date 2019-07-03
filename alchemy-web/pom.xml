@@ -142,9 +142,8 @@
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.dfire.platform</groupId>
-            <artifactId>alchemy-formats-json</artifactId>
-            <version>${project.parent.version}</version>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-json</artifactId>
         </dependency>
         <dependency>
             <groupId>com.dfire.platform</groupId>
@@ -154,11 +153,6 @@
         <dependency>
             <groupId>com.dfire.platform</groupId>
             <artifactId>alchemy-connectors-hbase</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dfire.platform</groupId>
-            <artifactId>alchemy-connectors-kafka-0.10</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
@@ -193,6 +187,11 @@
         </dependency>
         <dependency>
             <groupId>com.dfire.platform</groupId>
+            <artifactId>alchemy-connectors-kafka010</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dfire.platform</groupId>
             <artifactId>alchemy-connectors-dubbo</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
@@ -210,11 +209,17 @@
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-table_${scala.binary.version}</artifactId>
+            <artifactId>flink-table-planner_${scala.binary.version}</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-sql-client</artifactId>
+            <artifactId>flink-sql-client_${scala.binary.version}</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
@@ -545,12 +550,6 @@
             <groupId>org.apache.maven.wagon</groupId>
             <artifactId>wagon-file</artifactId>
             <version>${wagonVersion}</version>
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.apache.maven.wagon</groupId>-->
-<!--                    <artifactId>wagon-provider-api</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.apache.maven.wagon</groupId>
@@ -595,14 +594,11 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>com.google.code.findbugs</groupId>-->
-<!--                    <artifactId>jsr305</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
         </dependency>
-
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
 
     </dependencies>
 
@@ -612,6 +608,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
